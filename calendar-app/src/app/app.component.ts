@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { CalendarComponent } from './calendar/calendar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CalendarComponent],
+  imports: [CalendarComponent, 
+            HttpClientModule],
   template: `
-    <h1>Moja aplikacja Angular</h1>
     <app-calendar></app-calendar>
   `,
   styleUrls: ['./app.component.css']

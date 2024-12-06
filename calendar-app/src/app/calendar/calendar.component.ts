@@ -1,44 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { EventService, Event } from '../services/event.service';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+  styleUrls: ['./calendar.component.css'],
+  imports: [CommonModule],
 })
 export class CalendarComponent implements OnInit {
   currentMonth: Date = new Date();
   daysOfWeek: string[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   daysInMonth: Date[] = [];
-  events: { date: Date; title: string }[] = [
-    { date: new Date(2024, 11, 6), title: 'Spotkanie' },
-    { date: new Date(2024, 11, 8), title: 'Warsztat' }
-  ];
+  events: Event[] = []; // Zmieniono typ
+
+  constructor(private eventService: EventService) {}
 
   ngOnInit(): void {
     this.generateDaysInMonth();
+    this.loadEvents(); // Pobierz dane z backendu
+  }
+
+  loadEvents(): void {
+    this.eventService.getEvents().subscribe((data: Event[]) => {
+      this.events = data;
+    });
   }
 
   generateDaysInMonth(): void {
     const year = this.currentMonth.getFullYear();
     const month = this.currentMonth.getMonth();
 
-    // Pierwszy dzień miesiąca
     const firstDayOfMonth = new Date(year, month, 1);
 
-    // Ostatni dzień miesiąca
     const lastDayOfMonth = new Date(year, month + 1, 0);
 
-    // Dni do wyświetlenia
     const days: Date[] = [];
 
-    // Dodaj puste miejsca przed początkiem miesiąca
-    const firstDayIndex = (firstDayOfMonth.getDay() + 6) % 7; // Poniedziałek jako pierwszy
+    const firstDayIndex = (firstDayOfMonth.getDay() + 6) % 7;
     for (let i = 0; i < firstDayIndex; i++) {
       days.push(new Date(year, month, i - firstDayIndex + 1));
     }
 
-    // Dodaj dni miesiąca
     for (let i = 1; i <= lastDayOfMonth.getDate(); i++) {
       days.push(new Date(year, month, i));
     }
@@ -77,12 +80,14 @@ export class CalendarComponent implements OnInit {
     console.log('Wybrano dzień:', day);
   }
 
-  getEventsForDay(day: Date): { date: Date; title: string }[] {
-    return this.events.filter(
-      (event) =>
-        event.date.getDate() === day.getDate() &&
-        event.date.getMonth() === day.getMonth() &&
-        event.date.getFullYear() === day.getFullYear()
-    );
+  getEventsForDay(day: Date): Event[] {
+    return this.events.filter((event) => {
+      const eventDate = new Date(event.startTime);
+      return (
+        eventDate.getDate() === day.getDate() &&
+        eventDate.getMonth() === day.getMonth() &&
+        eventDate.getFullYear() === day.getFullYear()
+      );
+    });
   }
 }
