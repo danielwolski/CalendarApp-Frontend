@@ -1,0 +1,27 @@
+<div class="calendar">
+    <div class="calendar-header">
+      <button (click)="previousMonth()">&#8592;</button>
+      <h2>{{ currentMonth | date: 'MMMM yyyy' }}</h2>
+      <button (click)="nextMonth()">&#8594;</button>
+    </div>
+  
+    <div class="calendar-grid">
+      <div class="day-name" *ngFor="let day of daysOfWeek">
+        {{ day }}
+      </div>
+      <div
+        class="day"
+        *ngFor="let day of daysInMonth; let i = index"
+        [class.today]="isToday(day)"
+        (click)="selectDay(day)"
+      >
+        {{ day.getDate() }}
+        <div class="events">
+          <div *ngFor="let event of getEventsForDay(day)">
+            {{ event.title }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
