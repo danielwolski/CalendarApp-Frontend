@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EventService, Event } from '../services/event.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-calendar',
@@ -12,13 +13,18 @@ export class CalendarComponent implements OnInit {
   currentMonth: Date = new Date();
   daysOfWeek: string[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   daysInMonth: Date[] = [];
-  events: Event[] = []; // Zmieniono typ
+  events: Event[] = [];
 
-  constructor(private eventService: EventService) {}
+  isModalVisible: boolean = false;  // Określa, czy modal ma być widoczny
+  selectedDate: string = '';        // Data, która będzie przekazywana do modala
+
+  constructor(private eventService: EventService,
+              private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.generateDaysInMonth();
-    this.loadEvents(); // Pobierz dane z backendu
+    this.loadEvents();
   }
 
   loadEvents(): void {
@@ -76,10 +82,6 @@ export class CalendarComponent implements OnInit {
     );
   }
 
-  selectDay(day: Date): void {
-    console.log('Wybrano dzień:', day);
-  }
-
   getEventsForDay(day: Date): Event[] {
     return this.events.filter((event) => {
       const eventDate = new Date(event.startTime);
@@ -89,5 +91,16 @@ export class CalendarComponent implements OnInit {
         eventDate.getFullYear() === day.getFullYear()
       );
     });
+  }
+
+   // Funkcja do otwierania modala
+   openEventDetails(date: Date): void {
+    this.selectedDate = date.toLocaleDateString('en-GB').replace(/\//g, '.');
+    this.isModalVisible = true;  // Ustawia modal na widoczny
+  }
+
+  // Funkcja do zamknięcia modala
+  closeModal(): void {
+    this.isModalVisible = false;  // Ukrywa modal
   }
 }
