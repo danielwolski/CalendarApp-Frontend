@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 export interface Event {
   id: number;
   title: string;
-  startTime: string; // API zwraca daty w formacie ISO
+  startTime: string;
   endTime: string;
 }
 

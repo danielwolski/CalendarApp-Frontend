@@ -1,7 +1,8 @@
-<!-- modal.component.html -->
 <div class="modal-overlay" *ngIf="isVisible" (click)="close()">
     <div class="modal-content" (click)="$event.stopPropagation()">
-      <app-event-details [date]="selectedDate"></app-event-details>
+      <div class="event-details">
+        <h2>{{ selectedDate }}</h2>
+      </div>
       <button (click)="close()">Close</button>
     </div>
   </div>

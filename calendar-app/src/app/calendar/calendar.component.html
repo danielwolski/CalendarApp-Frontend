@@ -16,11 +16,17 @@
       (click)="openEventDetails(day)"
     >
       {{ day.getDate() }}
+
+      <div class="events">
+        <div *ngFor="let event of getEventsForDay(day)">
+          {{ event.title }}
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
 
-<!-- Modal z EventDetailsComponent -->
 <app-modal
   [isVisible]="isModalVisible"
   [selectedDate]="selectedDate"

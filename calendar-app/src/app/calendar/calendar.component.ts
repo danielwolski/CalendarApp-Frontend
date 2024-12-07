@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EventService, Event } from '../services/event.service';
-import { Router } from '@angular/router';
+import { ModalComponent } from '../day-details-modal/modal.component';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css'],
-  imports: [CommonModule],
+  imports: [
+    CommonModule, 
+    ModalComponent],
+  standalone: true
 })
 export class CalendarComponent implements OnInit {
   currentMonth: Date = new Date();
@@ -15,11 +18,10 @@ export class CalendarComponent implements OnInit {
   daysInMonth: Date[] = [];
   events: Event[] = [];
 
-  isModalVisible: boolean = false;  // Określa, czy modal ma być widoczny
-  selectedDate: string = '';        // Data, która będzie przekazywana do modala
+  isModalVisible: boolean = false;
+  selectedDate: string = '';
 
-  constructor(private eventService: EventService,
-              private router: Router
+  constructor(private eventService: EventService
   ) {}
 
   ngOnInit(): void {
@@ -93,14 +95,12 @@ export class CalendarComponent implements OnInit {
     });
   }
 
-   // Funkcja do otwierania modala
    openEventDetails(date: Date): void {
     this.selectedDate = date.toLocaleDateString('en-GB').replace(/\//g, '.');
-    this.isModalVisible = true;  // Ustawia modal na widoczny
+    this.isModalVisible = true;
   }
 
-  // Funkcja do zamknięcia modala
   closeModal(): void {
-    this.isModalVisible = false;  // Ukrywa modal
+    this.isModalVisible = false;
   }
 }
