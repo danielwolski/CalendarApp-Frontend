@@ -1,0 +1,14 @@
+<div class="modal-overlay" *ngIf="isVisible" (click)="close()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="event-details">
+        <h2>{{ selectedDate }}</h2>
+        <button class="add-event-button" (click)="openAddEventFormModal()">Add new event</button>
+      </div>
+      <button class="close-button" (click)="close()">Close</button>
+    </div>
+</div>
+  
+<app-add-event-modal
+  [isVisible]="isAddEventFormVisible"
+  (closeModal)="closeAddEventFormModal()"
+></app-add-event-modal>

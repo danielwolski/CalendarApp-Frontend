@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EventService, Event } from '../services/event.service';
-import { ModalComponent } from '../day-details-modal/modal.component';
+import { EventService } from '../services/event.service';
+import { ModalComponent } from '../modal/modal.component';
+import { Event } from '../models/event.model';
 
 @Component({
   selector: 'app-calendar',
