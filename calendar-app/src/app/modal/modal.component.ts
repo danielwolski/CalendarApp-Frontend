@@ -1,6 +1,8 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddEventModalComponent } from '../add-event-modal/add-event-modal.component';
+import { EventDetails } from '../models/event.model';
+import { EventService } from '../services/event.service';
 
 @Component({
   selector: 'app-modal',
@@ -12,12 +14,20 @@ import { AddEventModalComponent } from '../add-event-modal/add-event-modal.compo
   ],
   standalone: true
 })
-export class ModalComponent {
+export class ModalComponent implements OnChanges {
   @Input() isVisible: boolean = false; 
   @Input() selectedDate: string = '';  
   @Output() closeModal: EventEmitter<void> = new EventEmitter(); 
 
+  eventDetails: EventDetails[] = [];
   isAddEventFormVisible: boolean = false;
+
+  constructor(private eventService: EventService
+  ) {}
+
+  ngOnChanges(): void {
+    this.loadEventDetails();
+  }
 
   close(): void {
     this.closeModal.emit();
@@ -29,5 +39,15 @@ export class ModalComponent {
 
   closeAddEventFormModal(): void {
     this.isAddEventFormVisible = false;
+  }
+
+  loadEventDetails(): void {
+    this.eventService.getEventDetailsByDay(this.selectedDate).subscribe((data: EventDetails[]) => {
+      this.eventDetails = data;
+    });
+  }
+
+  getTime(dateTimeString: String) {
+    return  dateTimeString.split('T')[1];
   }
 }

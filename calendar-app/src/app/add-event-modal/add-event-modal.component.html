@@ -2,18 +2,45 @@
   <div class="modal-content" (click)="$event.stopPropagation()">
     <h2>Add event</h2>
 
-    <form (ngSubmit)="confirmCreateEvent()">
-      <label for="title">Title</label>
-      <input id="title" [(ngModel)]="eventRequest.title" name="title" required>
+    <form (ngSubmit)="confirmCreateEvent()" class="event-form">
+      <input
+        id="title"
+        [(ngModel)]="eventRequest.title"
+        name="title"
+        placeholder="Title"
+        required
+      />
+    
+      <input
+        id="startTime"
+        [(ngModel)]="eventRequest.startTime"
+        name="startTime"
+        type="datetime-local"
+        placeholder="Start time"
+        required
+      />
+    
+      <input
+        id="endTime"
+        [(ngModel)]="eventRequest.endTime"
+        name="endTime"
+        type="datetime-local"
+        placeholder="End time"
+        required
+      />
 
-      <label for="startTime">Start time</label>
-      <input id="startTime" [(ngModel)]="eventRequest.startTime" name="startTime" type="datetime-local" required>
-
-      <label for="endTime">End time</label>
-      <input id="endTime" [(ngModel)]="eventRequest.endTime" name="endTime" type="datetime-local" required>
-
-      <button class="close-button" (click)="close()">Close</button>
-      <button class="add-event-button" type="submit">Confirm</button>
+      <input
+        id="description"
+        [(ngModel)]="eventRequest.description"
+        name="description"
+        placeholder="description"
+        required
+      />
+    
+      <div class="form-buttons">
+        <button class="close-button" type="button" (click)="close()">Close</button>
+        <button class="green-button" type="submit">Confirm</button>
+      </div>
     </form>
   </div>
 </div>

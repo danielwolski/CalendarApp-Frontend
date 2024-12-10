@@ -33,7 +33,7 @@
   }
   
   .day.today {
-    background-color: #ffeb3b;
+    background-color: rgb(175, 149, 238);
   }
   
   .events {

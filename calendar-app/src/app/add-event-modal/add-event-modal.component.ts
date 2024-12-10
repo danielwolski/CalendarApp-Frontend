@@ -19,6 +19,7 @@ export class AddEventModalComponent {
     title: '',
     startTime: '',
     endTime: '',
+    description: '',
   };
 
   constructor(private eventService: EventService
@@ -29,6 +30,7 @@ export class AddEventModalComponent {
   }
 
   confirmCreateEvent(): void {
+    console.log(this.eventRequest)
     this.eventService.addEvent(this.eventRequest).subscribe({
       next: (response) => {
         console.log('Wydarzenie utworzone:', response);
