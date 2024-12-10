@@ -50,4 +50,9 @@ export class ModalComponent implements OnChanges {
   getTime(dateTimeString: String) {
     return  dateTimeString.split('T')[1];
   }
+
+  removeEvent(eventId: number) {
+    this.eventService.removeEvent(eventId).subscribe(() => {});
+  }
+
 }

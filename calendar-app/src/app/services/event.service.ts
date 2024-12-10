@@ -23,4 +23,9 @@ export class EventService {
   addEvent(request: CreateEventRequest): Observable<Event> {
     return this.http.post<Event>(this.apiUrl, request);
   }
+
+  removeEvent(eventId: number): Observable<void> {
+    const url = `${this.apiUrl}/${eventId}`;
+    return this.http.delete<void>(url);
+  }  
 }

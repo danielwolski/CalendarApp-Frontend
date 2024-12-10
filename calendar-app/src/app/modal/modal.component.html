@@ -1,11 +1,11 @@
 <div class="modal-overlay" *ngIf="isVisible" (click)="close()">
   <div class="modal-content" (click)="$event.stopPropagation()">
+
     <div class="event-details">
       <h2>{{ selectedDate }}</h2>
       <button class="green-button" (click)="openAddEventFormModal()">Add new event</button>
     </div>
 
-    <!-- Tabela z eventami -->
     <table class="events-table" *ngIf="eventDetails.length > 0">
       <thead>
         <tr>
@@ -14,6 +14,7 @@
           <th>Start Time</th>
           <th>End Time</th>
           <th>Description</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -23,6 +24,11 @@
           <td>{{ getTime(event.startTime) }}</td>
           <td>{{ getTime(event.endTime) }}</td>
           <td>{{ event.description }}</td>
+          <td>
+            <button class="delete-button" (click)="removeEvent(event.id)">
+              <span class="icon-trash"></span>
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -30,10 +36,10 @@
     <p *ngIf="eventDetails.length === 0" class="no-events-message">No events for this day.</p>
 
     <button class="close-button" (click)="close()">Close</button>
+    
   </div>
 </div>
 
-  
 <app-add-event-modal
   [isVisible]="isAddEventFormVisible"
   (closeModal)="closeAddEventFormModal()"

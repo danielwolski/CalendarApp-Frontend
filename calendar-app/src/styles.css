@@ -26,3 +26,14 @@
 .green-button:hover {
     background-color: rgb(47, 0, 158);
   }
+
+.icon-trash {
+   background-image: url('assets/trash.png');
+   background-size: contain;
+   background-repeat: no-repeat;
+   width: 20px;
+   height: 20px;
+   display: inline-block;
+   cursor: pointer;
+   background-position: center;
+  }
