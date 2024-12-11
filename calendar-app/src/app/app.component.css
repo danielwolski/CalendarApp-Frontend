@@ -1,0 +1,37 @@
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+  
+.sidebar {
+    width: 180px; 
+    background-color: rgb(238, 238, 238);
+    border-right: 6px solid #dddddd;
+    height: 100%; 
+}
+
+.menu-item button {
+    background: rgb(75, 1, 248);
+    color: white;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 140px;
+    font-size: 30px;
+    text-align: left;
+    margin-left: -15px;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+.menu-item:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 100px;
+}
+
+.menu {
+    list-style-type: none;
+}

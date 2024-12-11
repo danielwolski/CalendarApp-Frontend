@@ -54,7 +54,7 @@ export class ModalComponent implements OnInit, OnChanges {
   }
 
   getTime(dateTimeString: String) {
-    return  dateTimeString.split('T')[1];
+    return dateTimeString.split('T')[1].split(':')[0] + ":" + dateTimeString.split('T')[1].split(':')[1];
   }
 
   removeEvent(eventId: number) {

@@ -1,43 +1,104 @@
 .calendar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: Arial, sans-serif;
-  }
-  
-  .calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 300px;
-    margin-bottom: 10px;
-  }
-  
-  .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    width: 300px;
-  }
-  
-  .day-name {
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  .day {
-    text-align: center;
-    padding: 10px;
-    border: 1px solid #ccc;
-    cursor: pointer;
-  }
-  
-  .day.today {
-    background-color: rgb(175, 149, 238);
-  }
-  
-  .events {
-    margin-top: 5px;
-    font-size: 12px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  margin-left: 20%;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  padding: 20px;
+  width: 100%;
+  left: 50%;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 25%;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.current-month {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(75, 1, 248);
+}
+
+.nav-button {
+  background: white;
+  color: rgb(75, 1, 248);
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.nav-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: 100%;
+  max-width: 400px;
+}
+
+.day-name {
+  font-weight: bold;
+  text-align: center;
+  color: rgb(75, 1, 248);
+  text-transform: uppercase;
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 100px;
+  height: 100px;
+}
+
+.day:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.day.today {
+  background: rgb(255, 255, 255);
+  color: rgb(75, 1, 248);
+  border-color: rgb(75, 1, 248);
+  border-width: 1px;
+}
+
+.day-number {
+  padding: 3px;
+  font-weight: bold;
+}
+
+.events {
+  margin-top: 5px;
+  width: 100%;
+  text-align: center;
+}
+
+.event {
+  background: #ffffff;
+  color: rgb(0, 0, 0);
+  font-size: 0.65rem;
+  margin: 2px 0;
+  border-radius: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

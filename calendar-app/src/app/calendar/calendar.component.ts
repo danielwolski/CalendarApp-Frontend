@@ -112,4 +112,8 @@ export class CalendarComponent implements OnInit {
   closeModal(): void {
     this.isModalVisible = false;
   }
+
+  getTime(dateTimeString: String) {
+    return dateTimeString.split('T')[1].split(':')[0] + ":" + dateTimeString.split('T')[1].split(':')[1];
+  }
 }

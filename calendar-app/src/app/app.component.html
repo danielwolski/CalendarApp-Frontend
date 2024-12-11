@@ -1,1 +1,17 @@
-<router-outlet></router-outlet>
+<div class="app-container">
+    <div class="sidebar">
+      <ul class="menu">
+        <li class="menu-item">
+          <button (click)="goToCalendar()">Calendar</button>
+        </li>
+        <li class="menu-item">
+          <button (click)="goToTasks()">Tasks</button>
+        </li>
+      </ul>
+    </div>
+  
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  

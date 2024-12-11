@@ -1,8 +1,13 @@
 <div class="calendar">
   <div class="calendar-header">
-    <button (click)="previousMonth()">&#8592;</button>
-    <h2>{{ currentMonth | date: 'MMMM yyyy' }}</h2>
-    <button (click)="nextMonth()">&#8594;</button>
+
+    <button class="nav-button" (click)="previousMonth()">
+      &#9664;
+    </button>
+    <h2 class="current-month">{{ currentMonth | date: 'MMMM yyyy' }}</h2>
+    <button class="nav-button" (click)="nextMonth()">
+      &#9654;
+    </button>
   </div>
 
   <div class="calendar-grid">
@@ -15,11 +20,10 @@
       [class.today]="isToday(day)"
       (click)="openEventDetails(day)"
     >
-      {{ day.getDate() }}
-
+      <div class="day-number">{{ day.getDate() }}</div>
       <div class="events">
-        <div *ngFor="let event of getEventsForDay(day)">
-          {{ event.title }}
+        <div class="event" *ngFor="let event of getEventsForDay(day)">
+          {{ getTime(event.startTime) + " - " + getTime(event.endTime) + " " + event.title }}
         </div>
       </div>
 
