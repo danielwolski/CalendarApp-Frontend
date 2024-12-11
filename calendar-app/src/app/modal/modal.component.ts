@@ -14,7 +14,7 @@ import { EventService } from '../services/event.service';
   ],
   standalone: true
 })
-export class ModalComponent implements OnChanges {
+export class ModalComponent implements OnInit, OnChanges {
   @Input() isVisible: boolean = false; 
   @Input() selectedDate: string = '';  
   @Output() closeModal: EventEmitter<void> = new EventEmitter(); 
@@ -24,6 +24,12 @@ export class ModalComponent implements OnChanges {
 
   constructor(private eventService: EventService
   ) {}
+
+  ngOnInit(): void {
+    this.eventService.eventsUpdated$.subscribe(() => {
+      this.loadEventDetails();
+    });
+  }
 
   ngOnChanges(): void {
     this.loadEventDetails();
@@ -54,5 +60,4 @@ export class ModalComponent implements OnChanges {
   removeEvent(eventId: number) {
     this.eventService.removeEvent(eventId).subscribe(() => {});
   }
-
 }
