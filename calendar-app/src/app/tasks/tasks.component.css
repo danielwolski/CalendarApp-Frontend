@@ -1,4 +1,56 @@
 .tasks {
-    margin-left: 25%;
-    width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(75, 1, 248);
+    margin-left: 45%;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 15px;
+    margin-top: 45px;
+    align-items: center;
+    font-size: 25px;
+  }
+
+.events-table {
+    width: 800px;
+    overflow-x: auto;  
+    max-height: 50px;  
+    border-collapse: collapse;
+}
+
+.events-table td button {
+    margin-right: -30px;
+}
+
+.create-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+.create-form input {
+    flex: 1;
+    width: 600px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: -20px;
+}
+  
+.create-form input::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+.create-form .form-buttons {
+    display: flex;
+    align-items: center;
 }

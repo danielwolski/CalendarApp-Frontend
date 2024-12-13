@@ -1,5 +1,43 @@
-<div class="tasks">
-    <h2>Tasks</h2>
-    <p>Here you can manage your tasks!</p>
+<div  class="tasks">
+    <h2 class="header">Tasks</h2>
+
+    <p *ngIf="tasks.length === 0" class="no-events-message">Nothing to be done</p>
+
+    <table class="events-table" *ngIf="tasks.length > 0">
+      <tbody>
+        <tr *ngFor="let task of tasks; let i = index">
+          <td>
+            <button class="delete-button" (click)="toggleIsDone(task.id)">
+              <span [ngClass]="task.done ? 'icon-task-done' : 'icon-task-not-done'"></span>
+            </button>
+          </td>
+          <td>{{ task.description }}</td>
+          <td>
+            <button class="delete-button" (click)="removeTask(task.id)">
+              <span class="icon-trash"></span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <form (ngSubmit)="confirmCreateTask()" class="create-form" #taskForm="ngForm">
+      <input
+        id="description"
+        [(ngModel)]="taskRequest.description"
+        name="description"
+        placeholder="Add new task"
+        required
+      />
+      <div class="form-buttons">
+        <button
+          class="green-button"
+          type="submit"
+          [disabled]="taskForm.invalid"
+        >
+          Confirm
+        </button>
+      </div>
+    </form>    
+
 </div>
-  

@@ -49,6 +49,28 @@
     background-position: center;
 }
 
+.icon-task-done {
+  background-image: url('assets/task-done.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  cursor: pointer;
+  background-position: center;
+}
+
+.icon-task-not-done {
+  background-image: url('assets/task-not-done.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  cursor: pointer;
+  background-position: center;
+}
+
 .icon-calendar {
   background-image: url('assets/calendar.png');
   background-size: contain;
@@ -58,4 +80,8 @@
   display: inline-block;
   cursor: pointer;
   background-position: center;
+}
+
+.invalid-input {
+  border: 2px solid red;
 }

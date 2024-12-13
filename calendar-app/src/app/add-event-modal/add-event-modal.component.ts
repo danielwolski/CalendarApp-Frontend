@@ -33,10 +33,10 @@ export class AddEventModalComponent {
     console.log(this.eventRequest)
     this.eventService.addEvent(this.eventRequest).subscribe({
       next: (response) => {
-        console.log('Wydarzenie utworzone:', response);
+        console.log('Event created:', response);
       },
       error: (err) => {
-        console.error('Błąd podczas tworzenia wydarzenia:', err);
+        console.error('Error during creating event:', err);
       },
     });
   }
