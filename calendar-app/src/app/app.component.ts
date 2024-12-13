@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -19,5 +18,9 @@ export class AppComponent {
 
   goToTasks() {
     this.router.navigate(['/tasks']);
+  }
+
+  isActive(path: string): boolean {
+    return this.router.url === path;
   }
 }

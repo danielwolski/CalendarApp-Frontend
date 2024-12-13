@@ -37,3 +37,25 @@
    cursor: pointer;
    background-position: center;
   }
+
+.icon-tasks {
+    background-image: url('assets/task.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    cursor: pointer;
+    background-position: center;
+}
+
+.icon-calendar {
+  background-image: url('assets/calendar.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  cursor: pointer;
+  background-position: center;
+}

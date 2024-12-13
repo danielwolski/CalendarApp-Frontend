@@ -2,10 +2,18 @@
     <div class="sidebar">
       <ul class="menu">
         <li class="menu-item">
-          <button (click)="goToCalendar()">Calendar</button>
+          <button 
+            [class.active]="isActive('/events-list')"
+            (click)="goToCalendar()">
+            <i class="icon-calendar"></i> Calendar
+          </button>
         </li>
-        <li class="menu-item">
-          <button (click)="goToTasks()">Tasks</button>
+        <li class="menu-item"> 
+          <button 
+            [class.active]="isActive('/tasks')"
+            (click)="goToTasks()">
+            <i class="icon-tasks"></i> Tasks
+          </button>
         </li>
       </ul>
     </div>
