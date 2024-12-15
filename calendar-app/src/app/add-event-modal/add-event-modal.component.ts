@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AddEventModalComponent {
   @Input() isVisible: boolean = false; 
+  @Input() selectedDate: string = '';
   @Output() closeModal: EventEmitter<void> = new EventEmitter(); 
 
   eventRequest: CreateEventRequest = {
@@ -30,8 +31,7 @@ export class AddEventModalComponent {
   }
 
   confirmCreateEvent(): void {
-    console.log(this.eventRequest)
-    this.eventService.addEvent(this.eventRequest).subscribe({
+    this.eventService.addEvent(this.eventRequest, this.selectedDate).subscribe({
       next: (response) => {
         console.log('Event created:', response);
       },

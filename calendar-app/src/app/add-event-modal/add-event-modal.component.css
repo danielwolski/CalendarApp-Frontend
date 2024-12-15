@@ -24,7 +24,8 @@
     gap: 15px;
   }
   
-  .event-form input {
+  .event-form input,
+  .event-form textarea {
     width: 100%;
     padding: 10px;
     font-size: 16px;
@@ -32,8 +33,15 @@
     border-radius: 5px;
     box-sizing: border-box;
   }
+
+  .event-form textarea {
+    height: 100px; 
+    resize: none; 
+    overflow-y: auto;
+  }
   
-  .event-form input::placeholder {
+  .event-form input::placeholder,
+  .event-form textarea::placeholder {
     color: #999;
     font-style: italic;
   }

@@ -24,8 +24,15 @@ export class EventService {
     return this.http.get<EventDetails[]>(`${this.apiUrl}/by-day`, { params });
   }
 
-  addEvent(request: CreateEventRequest): Observable<Event> {
-    return this.http.post<Event>(this.apiUrl, request).pipe(
+  addEvent(request: CreateEventRequest, date: string): Observable<Event> {
+    const startDateTime = `${date}T${request.startTime}`;
+    const endDateTime = `${date}T${request.endTime}`;
+    const eventToSend = {
+      ...request,
+      startTime: startDateTime,
+      endTime: endDateTime,
+    };
+    return this.http.post<Event>(this.apiUrl, eventToSend).pipe(
       tap(() => this.eventsUpdatedSubject.next())
     );
   }

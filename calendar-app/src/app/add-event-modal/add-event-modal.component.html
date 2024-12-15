@@ -15,7 +15,7 @@
         id="startTime"
         [(ngModel)]="eventRequest.startTime"
         name="startTime"
-        type="datetime-local"
+        type="time"
         placeholder="Start time"
         required
       />
@@ -24,18 +24,18 @@
         id="endTime"
         [(ngModel)]="eventRequest.endTime"
         name="endTime"
-        type="datetime-local"
+        type="time"
         placeholder="End time"
         required
       />
 
-      <input
+      <textarea
         id="description"
         [(ngModel)]="eventRequest.description"
         name="description"
-        placeholder="description"
+        placeholder="Description"
         required
-      />
+      ></textarea>
     
       <div class="form-buttons">
         <button class="close-button" type="button" (click)="close()">Close</button>
