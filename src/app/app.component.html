@@ -1,6 +1,13 @@
 <div class="app-container">
     <div class="sidebar">
       <ul class="menu">
+        <li class="menu-item"> 
+          <button 
+            [class.active]="isActive('/login')"
+            (click)="goToLogin()">
+            <i class="icon-task-not-done"></i> Login
+          </button>
+        </li>
         <li class="menu-item">
           <button 
             [class.active]="isActive('/events-list')"

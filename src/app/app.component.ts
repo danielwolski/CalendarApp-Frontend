@@ -12,6 +12,10 @@ import { Router, RouterOutlet } from '@angular/router';
 export class AppComponent {
   constructor(private router: Router) {}
 
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
+
   goToCalendar() {
     this.router.navigate(['/events-list']);
   }
