@@ -16,7 +16,6 @@ export class AuthService {
   }
 
   saveToken(token: string): void {
-    console.log("token: ", token)
     localStorage.setItem('jwtToken', token);
   }
 
@@ -29,12 +28,12 @@ export class AuthService {
   }
 
   logout(): void {
-    console.log('Logging out...');
     localStorage.removeItem('jwtToken');
 
-    this.http.post(this.logoutUrl, {}).subscribe({
-      next: () => console.log('Logged out on the server'),
-      error: (err) => console.error('Server logout error:', err),
-    });
+    //TODO fix on backend side
+    // this.http.post(this.logoutUrl, {}).subscribe({
+    //   next: () => console.log('Logged out on the server'),
+    //   error: (err) => console.error('Server logout error:', err),
+    // });
   }
 }

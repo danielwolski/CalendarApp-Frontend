@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddEventModalComponent } from '../add-event-modal/add-event-modal.component';
 import { EventDetails } from '../models/event.model';
@@ -31,8 +31,10 @@ export class ModalComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnChanges(): void {
-    this.loadEventDetails();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['isVisible'] && changes['isVisible'].currentValue === true) {
+      this.loadEventDetails();
+    }
   }
 
   close(): void {
@@ -41,6 +43,7 @@ export class ModalComponent implements OnInit, OnChanges {
 
   openAddEventFormModal(): void {
     this.isAddEventFormVisible = true;
+    this.loadEventDetails();
   }
 
   closeAddEventFormModal(): void {
@@ -48,7 +51,7 @@ export class ModalComponent implements OnInit, OnChanges {
   }
 
   loadEventDetails(): void {
-    this.eventService.getEventDetailsByDay(this.selectedDate).subscribe((data: EventDetails[]) => {
+    this.eventService.getEventDetailsByDay(this.selectedDate)?.subscribe((data: EventDetails[]) => {
       this.eventDetails = data;
     });
   }

@@ -19,9 +19,13 @@ export class EventService {
     return this.http.get<Event[]>(this.apiUrl);
   }
 
-  getEventDetailsByDay(day: string): Observable<EventDetails[]> {
-    const params = new HttpParams().set('date', day);
-    return this.http.get<EventDetails[]>(`${this.apiUrl}/by-day`, { params });
+  getEventDetailsByDay(day: string): Observable<EventDetails[]> | null {
+    if (day != '' && day != null) {
+      const params = new HttpParams().set('date', day);
+      return this.http.get<EventDetails[]>(`${this.apiUrl}/by-day`, { params });
+    } else {
+      return null;
+    }
   }
 
   addEvent(request: CreateEventRequest, date: string): Observable<Event> {
