@@ -39,5 +39,11 @@ export class AddEventModalComponent {
         console.error('Error during creating event:', err);
       },
     });
+    this.clearAddEventFormInput();
   }
+
+  clearAddEventFormInput(): void {
+    this.eventRequest.title = '';
+    this.eventRequest.description = '';
+  }  
 }

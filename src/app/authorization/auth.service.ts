@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   private loginUrl = 'http://localhost:8080/api/auth/login';
+  private logoutUrl = 'http://localhost:8080/api/auth/logout';
 
   constructor(private http: HttpClient) { }
 
@@ -25,5 +26,15 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     return this.getToken() !== null;
+  }
+
+  logout(): void {
+    console.log('Logging out...');
+    localStorage.removeItem('jwtToken');
+
+    this.http.post(this.logoutUrl, {}).subscribe({
+      next: () => console.log('Logged out on the server'),
+      error: (err) => console.error('Server logout error:', err),
+    });
   }
 }

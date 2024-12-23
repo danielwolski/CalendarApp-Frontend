@@ -53,5 +53,12 @@ export class TasksComponent implements OnInit {
         console.error('Error during creating task:', err);
       },
     });
+    this.clearAddTaskFormInput();
   }
+
+  clearAddTaskFormInput(): void {
+    this.taskRequest = {
+      description: ''
+    };
+  }  
 }

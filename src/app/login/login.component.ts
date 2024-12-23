@@ -13,13 +13,25 @@ import { FormsModule } from '@angular/forms';
 export class LoginComponent {
   username = '';
   password = '';
+  errorMessage = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
   onLogin() {
-    this.authService.login(this.username, this.password).subscribe(response => {
-      this.authService.saveToken(response.token);
-      this.router.navigate(['/events-list']);
+    this.authService.login(this.username, this.password).subscribe({
+      next: response => {
+        this.authService.saveToken(response.token);
+        this.router.navigate(['/events-list']);
+      },
+      error: err => {
+        this.username = '';
+        this.password = '';
+        if (err.status === 500) {
+          this.errorMessage = 'Invalid credentials. Please try again.';
+        } else {
+          this.errorMessage = 'An unexpected error occurred. Please try again later.';
+        }
+      }
     });
   }
 }

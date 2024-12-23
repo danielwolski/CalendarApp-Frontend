@@ -1,13 +1,6 @@
 <div class="app-container">
     <div class="sidebar">
       <ul class="menu">
-        <li class="menu-item"> 
-          <button 
-            [class.active]="isActive('/login')"
-            (click)="goToLogin()">
-            <i class="icon-task-not-done"></i> Login
-          </button>
-        </li>
         <li class="menu-item">
           <button 
             [class.active]="isActive('/events-list')"
@@ -20,6 +13,14 @@
             [class.active]="isActive('/tasks')"
             (click)="goToTasks()">
             <i class="icon-tasks"></i> Tasks
+          </button>
+        </li>
+      </ul>
+      <ul class="logout-menu">  
+        <li class="menu-item"> 
+          <button 
+            (click)="logout()">
+            <i class="icon-logout"></i> Logout
           </button>
         </li>
       </ul>

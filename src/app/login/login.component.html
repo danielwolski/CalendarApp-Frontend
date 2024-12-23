@@ -1,15 +1,31 @@
-<form (ngSubmit)="onLogin()">
-    <label for="username">Username:</label>
-    <input id="username" [(ngModel)]="username" name="username" />
-  
-    <label for="password">Password:</label>
-    <input
-      id="password"
-      [(ngModel)]="password"
-      name="password"
-      type="password"
-    />
-  
-    <button type="submit">Login</button>
-  </form>
-  
+<div class="modal-overlay">
+  <div class="modal-content">
+    <form class="login-form" (ngSubmit)="onLogin()">
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+      
+      <input 
+        id="username" 
+        [(ngModel)]="username" 
+        name="username" 
+        placeholder="Username" 
+        required 
+      />
+
+      <input 
+        id="password" 
+        [(ngModel)]="password" 
+        name="password" 
+        type="password" 
+        placeholder="Password" 
+        required 
+      />
+
+      <div class="form-buttons">
+        <button type="submit">Login</button>
+      </div>
+
+    </form>
+  </div>
+</div>

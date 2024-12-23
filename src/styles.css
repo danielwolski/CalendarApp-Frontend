@@ -86,6 +86,17 @@
   background-position: center;
 }
 
+.icon-logout {
+  background-image: url('assets/logout.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  cursor: pointer;
+  background-position: center;
+}
+
 .invalid-input {
   border: 2px solid red;
 }
